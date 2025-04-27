@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import IgnInput from "./IgnInput";
+
 import Quiz from "./Quiz";
 import FinishScreen from "./FinishScreen";
 import { useEffect } from "react";
@@ -9,7 +10,7 @@ import { setLoadingQuestions, setQuestions, setQuestionsError } from "../dataSli
 function App() {
   const dispatch = useDispatch();
   const { fetchedQuestions, isLoading, isError, error } = useQuestions();
-  const { ign, quizCompleted, questionsError } = useSelector((state) => state.data);
+  const {ign, quizCompleted, questionsError} = useSelector(state => state.data)
 
   useEffect(() => {
     if (isLoading) {

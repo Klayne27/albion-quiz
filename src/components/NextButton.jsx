@@ -6,13 +6,14 @@ function NextButton() {
   const {
     selectedAnswer,
     currentQuestionIndex,
-    questionsLength,
     answerState,
+    questions,
     loadingQuestions,
     questionsError,
     quizCompleted,
   } = useSelector((state) => state.data);
 
+  const questionsLength = questions.length;
   const isButtonEnabled = selectedAnswer !== null && answerState === null;
   const isLastQuestion = currentQuestionIndex === questionsLength - 1;
   const buttonText = isLastQuestion ? "Finish" : "Next";
