@@ -1,0 +1,169 @@
+[
+  {
+    "question": "What is 'IP' and why is it important in ZvZ",
+    "options": [
+      "Internet Protocol; it affects lag.",
+      "Item Power; it determines the effectiveness of a player's gear.",
+      "Important Position; it indicates a player's role.",
+      "Inventory Pouch; it shows how much loot a player has"
+    ],
+    "correct_answer": "Item Power; it determines the effectiveness of a player's gear.",
+    "points": 10
+  },
+  {
+    "question": "What is most likely to happen if you chase enemy stragglers far ahead of the Shot Caller and the main zerg?",
+    "options": [
+      "Pick off easy solo kills",
+      "Risk isolation and misposition the zerg",
+      "Draw enemy focus away from your main force",
+      "Gather intel on enemy gear and tactics"
+    ],
+    "correct_answer": "Risk isolation and misposition the zerg",
+    "points": 10
+  },
+  {
+    "question": "What is the purpose of the 'Disarray' mechanic in ZvZ",
+    "options": [
+      "To increase the damage of larger Zergs",
+      "To reduce the effectiveness of overwhelmingly larger Zergs against smaller ones",
+      "To make players harder to hit",
+      "To increase healing received"
+    ],
+    "correct_answer": "To reduce the effectiveness of overwhelmingly larger Zergs against smaller ones",
+    "points": 10
+  },
+  {
+    "question": "What does 'AoE escalation' mean in ZvZ",
+    "options": [
+      "Scale AoE damage down with more targets",
+      "Scale AoE damage up with more targets",
+      "Scale AoE damage up with more targets",
+      "Scale AoE healing down with more targets"
+    ],
+    "correct_answer": "Area of Effect spells deal more damage with more players",
+    "points": 10
+  },
+  {
+    "question": "Why is positioning important for a ZvZ Zerg?",
+    "options": [
+      "It doesn't matter in large fights",
+      "To avoid incoming damage and maximize the effectiveness of abilities",
+      "To look visually appealing",
+      "To be closer to gathering nodes"
+    ],
+    "correct_answer": "To avoid incoming damage and maximize the effectiveness of abilities",
+    "points": 10
+  },
+  {
+    "question": "What is the primary risk of a poorly executed 'bomb squad' engage?",
+    "options": [
+      "The bomb squad members might get too many kills",
+      "The main Zerg might not follow up, leading to the bomb squad being wiped",
+      "The enemy Zerg will ignore them",
+      "It will heal the enemy Zerg"
+    ],
+    "correct_answer": "The main Zerg might not follow up, leading to the bomb squad being wiped",
+    "points": 10
+  },
+  {
+    "question": "In a drawn-out ZvZ fight, what becomes increasingly important for a Zerg's sustainability?",
+    "options": [
+      "Having more DPS players than the enemy",
+      "Effective cooldown rotation and mana management by healers and support",
+      "Constantly engaging without breaks",
+      "Ignoring enemy movements"
+    ],
+    "correct_answer": "Effective cooldown rotation and mana management by healers and support",
+    "points": 30
+  },
+  {
+    "question": "Why is it important for DPS players to understand the enemy Zerg's defensive cooldowns?",
+    "options": [
+      "To know when to disengage and run away",
+      "To time their burst damage for when defenses are down",
+      "To focus fire on tanks",
+      "To inform the healers who needs healing"
+    ],
+    "correct_answer": "To time their burst damage for when defenses are down",
+    "points": 20
+  },
+  {
+    "question": "How does a well-timed cleanse from a Support player impact an enemy Zerg's engage?",
+    "options": [
+      "It increases the enemy's damage",
+      "It can remove crucial crowd control or debuffs applied by the engaging Zerg",
+      "It heals the enemy Zerg",
+      "It makes the enemy Zerg immune to damage"
+    ],
+    "correct_answer": "It can remove crucial crowd control or debuffs applied by the engaging Zerg",
+    "points": 20
+  },
+  {
+    "question": "What information does a Shot Caller need from their scouts or front line?",
+    "options": [
+      "Enemy jokes and memes",
+      "Enemy Zerg composition, positioning, and key cooldowns used",
+      "The market price of resources",
+      "The weather in the zone"
+    ],
+    "correct_answer": "Enemy Zerg composition, positioning, and key cooldowns used",
+    "points": 30
+  },
+  {
+    "question": "How does terrain and objectives (like choke points or capture points) influence a Shot Caller's plan?",
+    "options": [
+      "They are irrelevant in large fights",
+      "They can be used to funnel enemies, provide defensive positions, or force engagements",
+      "They only matter for gathering",
+      "They reduce the effectiveness of abilities"
+    ],
+    "correct_answer": "They can be used to funnel enemies, provide defensive positions, or force engagements",
+    "points": 30
+  },
+  {
+    "question": "What is the purpose of a 'feint' or fake engage in ZvZ?",
+    "options": [
+      "To confuse the Shot Caller's own Zerg",
+      "To trick the enemy Zerg into wasting defensive cooldowns or committing to a bad position",
+      "To allow players to go AFK",
+      "To practice dismounting"
+    ],
+    "correct_answer": "To trick the enemy Zerg into wasting defensive cooldowns or committing to a bad position",
+    "points": 10
+  },
+  {
+    "question": "In a chaotic ZvZ, why is it critical for players to primarily focus on the Shot Caller's crown and instructions, even if it seems counter-intuitive in the moment?",
+    "options": [
+      "The player with the crown gets extra loot.",
+      "The Shot Caller has the overall strategic view and is making calls based on the entire Zerg's positioning, cooldowns, and the enemy's movements, which individual players cannot fully perceive.",
+      "Following the crown is a guild tradition with no strategic benefit.",
+      "The crown grants a defensive buff to nearby players."
+    ],
+    "correct_answer": "The Shot Caller has the overall strategic view and is making calls based on the entire Zerg's positioning, cooldowns, and the enemy's movements, which individual players cannot fully perceive.",
+    "points": 30
+  },
+  {
+    "question": "When is the most effective time to use a Major Healing Potion or a Major Resistance Potion in ZvZ?",
+    "options": [
+      "As soon as you take any damage.",
+      "Pre-emptively before an expected enemy engage or immediately when taking heavy burst damage to survive.",
+      "Only when you are at critically low health (under 10%).",
+      "After the fight is completely over."
+    ],
+    "correct_answer": "Pre-emptively before an expected enemy engage or immediately when taking heavy burst damage to survive.",
+    "points": 30
+  },
+  {
+    "question": "Why is 'not panicking' under pressure in ZvZ crucial for individual survival and the Zerg's success?",
+    "options": [
+      "Panicking makes your character move slower.",
+      "Panicking leads to poor decision-making, wasted cooldowns, incorrect positioning, and can cause a domino effect of mistakes that harm the entire Zerg.",
+      "Panicking makes you invisible to the enemy.",
+      "Panicking increases your damage output."
+    ],
+    "correct_answer": "Panicking leads to poor decision-making, wasted cooldowns, incorrect positioning, and can cause a domino effect of mistakes that harm the entire Zerg.",
+    "points": 20
+  }
+]
+
+// Follow directions based on callers perspective
