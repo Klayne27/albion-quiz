@@ -12,31 +12,9 @@ export default function Quiz() {
     quizCompleted,
     loadingQuestions,
     questionsError,
-    score,
     hp,
-    maxHp
+    maxHp,
   } = useSelector((state) => state.data);
-
-  if (loadingQuestions) {
-    return <Loader />;
-  }
-
-  if (questionsError) {
-    return (
-      <div className="text-center text-xl mt-8 text-red-600">
-        Error loading questions: {questionsError}
-      </div>
-    );
-  }
-
-  if (quizCompleted) {
-    return null;
-  }
-
-  const currentQuestion = questions[currentQuestionIndex];
-  if (!currentQuestion) {
-    return <div className="text-center text-xl mt-8">No questions available.</div>;
-  }
 
   const commonHoverActiveStyles = `
     hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
@@ -50,12 +28,32 @@ export default function Quiz() {
   `;
 
   const questionsLength = questions.length;
-  const maxPossibleScore = questions.reduce((acc, curr) => acc + (curr.points || 0), 0);
+  const currentQuestion = questions[currentQuestionIndex];
+
   const hpPercent = maxHp ? (hp / maxHp) * 100 : 0;
 
-  const remainingHp = maxPossibleScore - score
   const remainingCount = questionsLength - currentQuestionIndex;
   const manaPercent = questionsLength ? (remainingCount / questionsLength) * 100 : 0;
+
+  if (loadingQuestions) {
+    return <Loader />;
+  }
+
+  if (!currentQuestion) {
+    return <div className="text-center text-xl mt-8">No questions available.</div>;
+  }
+
+  if (questionsError) {
+    return (
+      <div className="text-center text-xl mt-8 text-red-600">
+        Error loading questions: {questionsError}
+      </div>
+    );
+  }
+
+  if (quizCompleted) {
+    return null;
+  }
 
   return (
     <div

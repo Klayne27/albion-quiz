@@ -5,12 +5,12 @@ const roles = ["DPS", "Healer", "D-Tank", "O-Tank", "Support"];
 export default function RoleDropdown({ selectRole, setSelectRole }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const displayTextClass = selectRole ? "text-[#4e2c08]" : "text-[#926e47]";
+
   const handleSelect = (selectedRole) => {
     setSelectRole(selectedRole);
     setIsOpen(false);
   };
-
-  const displayTextClass = selectRole ? "text-[#4e2c08]" : "text-[#926e47]";
 
   return (
     <div className="relative w-full cursor-[url('/cursor.png'),_auto]">

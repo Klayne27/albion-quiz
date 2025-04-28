@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { finishQuiz, nextQuestion } from "../dataSlice";
 
 export default function NextButton() {
-  const dispatch = useDispatch();
   const {
     currentQuestionIndex,
     answerState,
@@ -11,6 +10,8 @@ export default function NextButton() {
     questionsError,
     quizCompleted,
   } = useSelector((state) => state.data);
+
+  const dispatch = useDispatch();
 
   const questionsLength = questions.length;
   const isLastQuestion = currentQuestionIndex === questionsLength - 1;
@@ -24,10 +25,6 @@ export default function NextButton() {
       dispatch(nextQuestion());
     }
   };
-
-  if (quizCompleted || loadingQuestions || questionsError) {
-    return null;
-  }
 
   const commonButtonStyles = `
     px-3 py-1 border-3 rounded-full text-xl border-gray-500 cursor-pointer
@@ -52,6 +49,10 @@ export default function NextButton() {
     active:scale-100
     active:bg-gradient-to-b active:from-stone-900 active:via-stone-800 active:to-stone-600
   `;
+
+  if (quizCompleted || loadingQuestions || questionsError) {
+    return null;
+  }
 
   return (
     <button

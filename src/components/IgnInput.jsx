@@ -6,19 +6,14 @@ import { IoIosCheckmark } from "react-icons/io";
 import RoleDropdown from "./RoleDropdown";
 
 function IgnInput() {
-  const mainBannerClipPath = "polygon(0% 0%, 99% 0%, 99% 84%, 49% 99%, 0% 84%)";
-  const borderClipPath = "polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%)";
-
   const dispatch = useDispatch();
   const [inputIgn, setInputIgn] = useState("");
   const [selectRole, setSelectRole] = useState("");
   const [rememberMeClicked, setRememberMeClicked] = useState(false);
   const [autoLoginClicked, setAutoLoginClicked] = useState(false);
 
-
-  const ign = useSelector(state => state.data.ign)
+  const ign = useSelector((state) => state.data.ign);
   const role = useSelector((state) => state.data.role);
-
 
   const handleRememberMeClick = () => {
     setRememberMeClicked((click) => !click);
@@ -36,13 +31,16 @@ function IgnInput() {
     }
   };
 
+  const mainBannerClipPath = "polygon(0% 0%, 99% 0%, 99% 84%, 49% 99%, 0% 84%)";
+  const borderClipPath = "polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%)";
+
   const commonHoverActiveStyles = `
     hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
     active:bg-stone-950
     active:scale-95
     transition ease-in-out duration-150
   `;
-  
+
   const focusStyles = `
     focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
   `;
@@ -50,7 +48,7 @@ function IgnInput() {
   if (ign && role) {
     return null;
   }
-  
+
   return (
     <div
       className="relative w-full h-screen flex justify-center items-start"

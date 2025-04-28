@@ -4,13 +4,21 @@ import { useEffect, useRef } from "react";
 import { resetQuiz } from "../dataSlice";
 
 function FinishScreen() {
-  const dispatch = useDispatch();
   const { saveResult, isError } = useSaveResult();
+  const {
+    ign,
+    role,
+    score,
+    questions,
+    userAnswers,
+    quizCompleted,
+    correctAnswers,
+    hp,
+    maxHp,
+  } = useSelector((state) => state.data);
 
-  const { ign, role, score, questions, userAnswers, quizCompleted, correctAnswers, hp, maxHp } =
-    useSelector((state) => state.data);
+  const dispatch = useDispatch();
 
-  const maxPossibleScore = questions.reduce((acc, q) => acc + (q.points || 0), 0);
   const hasSaved = useRef(false);
 
   useEffect(() => {
@@ -26,15 +34,21 @@ function FinishScreen() {
       saveResult(resultData);
       hasSaved.current = true;
     }
-  }, [quizCompleted, ign, role, score, questions.length, userAnswers, saveResult, correctAnswers]);
+  }, [
+    quizCompleted,
+    ign,
+    role,
+    score,
+    questions.length,
+    userAnswers,
+    saveResult,
+    correctAnswers,
+  ]);
 
   const handleResetQuiz = () => {
     hasSaved.current = false;
     dispatch(resetQuiz());
   };
-
-    const remainingHp = maxPossibleScore - score;
-    const hpPercent = maxPossibleScore > 0 ? (remainingHp / maxPossibleScore) * 100 : 0;
 
   const commonButtonStyles = `
     px-4 py-2 border-3 rounded-full text-md border-gray-500 cursor-pointer
