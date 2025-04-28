@@ -37,24 +37,24 @@ function FinishScreen() {
     queryClient.invalidateQueries(["quizQuestions"]);
   };
 
-  if (!quizCompleted) {
-    return null;
-  }
-
   const commonButtonStyles = `
    px-3 py-2 border-3 rounded-full text-md border-gray-500 cursor-pointer
    transition ease-in-out duration-150 transform
    active:scale-95
- `;
-
-  const primaryActionStyles = `
-bg-gradient-to-b from-stone-900 via-stone-800 to-stone-600 text-black hover:from-stone-800 hover:via-stone-700 hover:to-stone-600 active:from-stone-950 active:via-stone-900 active:to-stone-700
- `;
-
-  const focusStyles = `
+   `;
+   
+   const primaryActionStyles = `
+   bg-gradient-to-b from-stone-900 via-stone-800 to-stone-600 text-black hover:from-stone-800 hover:via-stone-700 hover:to-stone-600 active:from-stone-950 active:via-stone-900 active:to-stone-700
+   `;
+   
+   const focusStyles = `
    focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
- `;
-
+   `;
+   
+   if (!quizCompleted) {
+     return null;
+   }
+   
   return (
     <div
       className="relative w-full h-screen flex justify-center items-center bg-gray-900 overflow-hidden"

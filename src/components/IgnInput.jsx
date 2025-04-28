@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIgn, setRole } from "../dataSlice";
 import { PiCaretDoubleLeftBold } from "react-icons/pi";
 import { IoIosCheckmark } from "react-icons/io";
+import RoleDropdown from "./RoleDropdown";
 
 function IgnInput() {
   const mainBannerClipPath = "polygon(0% 0%, 99% 0%, 99% 84%, 49% 99%, 0% 84%)";
@@ -14,7 +15,10 @@ function IgnInput() {
   const [rememberMeClicked, setRememberMeClicked] = useState(false);
   const [autoLoginClicked, setAutoLoginClicked] = useState(false);
 
-  const { ign, role } = useSelector((state) => state.data);
+
+  const ign = useSelector(state => state.data.ign)
+  const role = useSelector((state) => state.data.role);
+
 
   const handleRememberMeClick = () => {
     setRememberMeClicked((click) => !click);
@@ -32,21 +36,21 @@ function IgnInput() {
     }
   };
 
+  const commonHoverActiveStyles = `
+  hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
+  active:bg-stone-950
+  active:scale-95
+  transition ease-in-out duration-150
+  `;
+  
+  const focusStyles = `
+  focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
+  `;
+
   if (ign && role) {
     return null;
   }
-
-  const commonHoverActiveStyles = `
-    hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
-    active:bg-stone-950
-    active:scale-95
-    transition ease-in-out duration-150
-  `;
-
-  const focusStyles = `
-    focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
-  `;
-
+  
   return (
     <div
       className="relative w-full h-screen flex justify-center items-start bg-gray-900 overflow-hidden"
@@ -93,13 +97,7 @@ function IgnInput() {
                     onChange={(e) => setInputIgn(e.target.value)}
                     className={`px-3 border-3 border-gray-500 rounded-full text-sm bg-gradient-to-b from-[#FFD8AF] via-[#cea985] to-[#a3886b] placeholder:text-[#926e47] text-[#4e2c08] ${focusStyles}`}
                   />
-                  <input
-                    type="text"
-                    placeholder="Main Role"
-                    value={selectRole}
-                    onChange={(e) => setSelectRole(e.target.value)}
-                    className={`px-3 border-3 rounded-full text-sm bg-gradient-to-b from-[#FFD8AF] via-[#cea985] to-[#a3886b] border-gray-500 placeholder:text-[#926e47] text-[#4e2c08] ${focusStyles}`}
-                  />
+                  <RoleDropdown selectRole={selectRole} setSelectRole={setSelectRole} />
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 items-center sm:items-start">

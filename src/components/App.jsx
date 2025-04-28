@@ -10,7 +10,9 @@ import { setLoadingQuestions, setQuestions, setQuestionsError } from "../dataSli
 function App() {
   const dispatch = useDispatch();
   const { fetchedQuestions, isLoading, isError, error } = useQuestions();
-  const {ign, quizCompleted, questionsError} = useSelector(state => state.data)
+  const ign = useSelector((state) => state.data.ign);
+  const quizCompleted = useSelector((state) => state.data.quizCompleted);
+  const questionsError = useSelector((state) => state.data.questionsError);
 
   useEffect(() => {
     if (isLoading) {

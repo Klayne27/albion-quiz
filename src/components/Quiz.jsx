@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Options from "./Options";
 import NextButton from "./NextButton";
 import { RxCross2 } from "react-icons/rx";
+import Loader from "./Loader";
 
 export default function Quiz() {
   const {
@@ -15,7 +16,7 @@ export default function Quiz() {
   const currentQuestion = questions[currentQuestionIndex];
 
   if (loadingQuestions) {
-    return <div className="text-center text-xl mt-8">Loading questions...</div>;
+    return <Loader />
   }
 
   if (questionsError) {
@@ -53,12 +54,12 @@ export default function Quiz() {
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-gradient-to-b from-[#e4c1a7] via-[#c7a387] to-[#c7a387] p-3 shadow-md w-full max-w-sm md:max-w-[40rem] md:min-w-[40rem] lg:max-w-screen-md">
-        <div className="flex items-start gap-4 mb-4 sm:flex-row">
+      <div className="bg-gradient-to-b from-[#e4c1a7] via-[#c7a387] to-[#c7a387] p-3 shadow-md w-full max-w-sm md:w-[46rem] ] lg:max-w-screen-md">
+        <div className="flex items-start gap-2 mb-4 sm:flex-row">
           <div className="flex flex-col gap-4">
             <img
               src="./avatar.png"
-              className="w-17 h-17 border-[#9F7B5C] border-3 rounded-full mx-auto sm:w-24 sm:h-20"
+              className="w-17 h-17 border-[#9F7B5C] border-3 rounded-full mx-auto sm:w-17 sm:h-17 mt-1"
               alt="Player Avatar"
             />
             <div className="mt-4 ml-1 text-xs text-gray-700 sm:text-left">
