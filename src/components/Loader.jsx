@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = ({ size = 100, color = "#D8A54D", className }) => {
+const Loader = ({ size = 100, color = "#c5810a", className }) => {
   const spinnerSvg = (
     <svg
       fill="hsl(228, 97%, 42%)"
@@ -16,7 +16,7 @@ const Loader = ({ size = 100, color = "#D8A54D", className }) => {
       <defs>
         <linearGradient id="RadialGradient8932">
           <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
-          <stop offset="100%" stopColor="currentColor" stopOpacity="0.25" />
+          <stop offset="70%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>
       <style>{`
@@ -40,12 +40,26 @@ const Loader = ({ size = 100, color = "#D8A54D", className }) => {
 
   return (
     <div
-      className="relative w-full h-screen flex justify-center items-center bg-gray-900 overflow-hidden"
+      className="relative w-full h-screen flex justify-center items-center overflow-hidden"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      <img
+        src="/bg4.jpeg"
+        className="relative w-full h-screen flex justify-center items-start overflow-hidden"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+        alt="Background"
+      />
       {spinnerSvg}
     </div>
   );

@@ -7,13 +7,14 @@ const initialState = {
   currentQuestionIndex: 0,
   userAnswers: [],
   score: 0,
+  hp: 0,
+  maxHp: 0,
   quizCompleted: false,
   loadingQuestions: true,
   questionsError: null,
   correctAnswers: 0,
   answerState: null,
 };
-
 
 const dataSlice = createSlice({
   name: "data",
@@ -29,6 +30,10 @@ const dataSlice = createSlice({
       state.questions = action.payload;
       state.loadingQuestions = false;
       state.questionsError = null;
+
+      const total = action.payload.reduce((acc, curr) => acc + curr.points, 0);
+      state.maxHp = total;
+      state.hp = total;
     },
     setLoadingQuestions(state, action) {
       state.loadingQuestions = action.payload;
@@ -57,6 +62,8 @@ const dataSlice = createSlice({
         state.correctAnswers += 1;
       } else {
         state.answerState = "incorrect";
+        const cost = current.points || 0;
+        state.hp = Math.max(state.hp - cost, 0);
       }
     },
 

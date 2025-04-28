@@ -37,14 +37,14 @@ function IgnInput() {
   };
 
   const commonHoverActiveStyles = `
-  hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
-  active:bg-stone-950
-  active:scale-95
-  transition ease-in-out duration-150
+    hover:bg-gradient-to-b hover:from-stone-800 hover:via-stone-700 hover:to-stone-500
+    active:bg-stone-950
+    active:scale-95
+    transition ease-in-out duration-150
   `;
   
   const focusStyles = `
-  focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
+    focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
   `;
 
   if (ign && role) {
@@ -53,13 +53,27 @@ function IgnInput() {
   
   return (
     <div
-      className="relative w-full h-screen flex justify-center items-start bg-gray-900 overflow-hidden"
+      className="relative w-full h-screen flex justify-center items-start"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="relative h-[43rem] w-64 md:w-80 lg:w-96">
+      <img
+        src="/bg4.jpeg"
+        className="relative w-full h-screen flex justify-center items-start overflow-hidden"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+        alt="Background"
+      />
+      <div className="relative h-[46rem] w-64 md:w-80 lg:w-96">
         <div
           className="absolute -inset-1 bg-gradient-to-b from-yellow-500 via-yellow-900 to-yellow-500"
           style={{
@@ -146,7 +160,7 @@ function IgnInput() {
                     </button>
                   </div>
                 </div>
-                <div className="flex justify-between items-center mt-20">
+                <div className="flex justify-between items-center mt-29">
                   <button
                     type="button"
                     className={`px-2 border-3 rounded-full text-sm border-gray-500 bg-gradient-to-b from-stone-900 via-stone-800 to-stone-600 hover:from-stone-800 hover:via-stone-700 hover:to-stone-600 active:from-stone-950 active:via-stone-900 active:to-stone-700 text-yellow-400 cursor-pointer active:bg-[#4c5155] ${commonHoverActiveStyles} ${focusStyles}`}

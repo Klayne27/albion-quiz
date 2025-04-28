@@ -7,7 +7,7 @@ function FinishScreen() {
   const dispatch = useDispatch();
   const { saveResult, isError } = useSaveResult();
 
-  const { ign, role, score, questions, userAnswers, quizCompleted, correctAnswers } =
+  const { ign, role, score, questions, userAnswers, quizCompleted, correctAnswers, hp, maxHp } =
     useSelector((state) => state.data);
 
   const maxPossibleScore = questions.reduce((acc, q) => acc + (q.points || 0), 0);
@@ -33,6 +33,9 @@ function FinishScreen() {
     dispatch(resetQuiz());
   };
 
+    const remainingHp = maxPossibleScore - score;
+    const hpPercent = maxPossibleScore > 0 ? (remainingHp / maxPossibleScore) * 100 : 0;
+
   const commonButtonStyles = `
     px-4 py-2 border-3 rounded-full text-md border-gray-500 cursor-pointer
     transition ease-in-out duration-150 transform
@@ -53,12 +56,26 @@ function FinishScreen() {
 
   return (
     <div
-      className="relative w-full min-h-screen flex justify-center items-center bg-gray-900 overflow-hidden px-4 py-8"
+      className="relative w-full min-h-screen flex justify-center items-center overflow-hidden px-4 py-8"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      <img
+        src="/bg3.jpg"
+        className="relative w-full h-screen flex justify-center items-start overflow-hidden"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+        alt="Background"
+      />
       <div className="shadow-lg bg-[#302D31] border border-stone-500 p-10 w-full max-w-sm md:max-w-md flex flex-col justify-center items-center text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#ce9261]">
           Quiz Completed!
@@ -69,7 +86,7 @@ function FinishScreen() {
         ) : (
           <>
             <p className="text-base md:text-xl text-[#f5dac5]">
-              Score: {score} / {maxPossibleScore}
+              Score: {hp} / {maxHp}
             </p>
             <p className="text-base md:text-xl text-[#f5dac5]">
               Correct Answers: {correctAnswers} / {questions.length}
