@@ -18,9 +18,3 @@ option,
 button {
   cursor: inherit;
 }
-
-select option {
-  background-image: linear-gradient(to bottom, #ffd8af, #cea985, #a3886b);
-
-  color: #4e2c08;
-}

@@ -10,29 +10,10 @@ const initialState = {
   quizCompleted: false,
   loadingQuestions: true,
   questionsError: null,
-  selectedAnswer: null,
+  correctAnswers: 0,
   answerState: null,
 };
 
-const processAnswer = (state) => {
-  const currentQuestion = state.questions[state.currentQuestionIndex];
-  
-  if (state.selectedAnswer !== null) {
-    state.userAnswers.push(state.selectedAnswer);
-
-    state.answerState = state.selectAnswer;
-  } else {
-    console.warn("Processing answer with no selected answer.");
-    state.userAnswers.push(null);
-    state.answerState = "unanswered";
-  }
-
-  if (currentQuestion && state.selectedAnswer === currentQuestion.correct_answer) {
-    state.score += currentQuestion.points || 0;
-  }
-
-  state.selectedAnswer = null;
-};
 
 const dataSlice = createSlice({
   name: "data",
@@ -62,19 +43,29 @@ const dataSlice = createSlice({
       }
     },
 
-    nextQuestion: (state) => {
-      processAnswer(state);
+    answerQuestion: (state, action) => {
+      const current = state.questions[state.currentQuestionIndex];
+      const picked = action.payload;
 
-      state.selectedAnswer = null;
+      if (state.answerState !== null) return;
+
+      state.userAnswers.push(picked);
+
+      if (picked === current.correct_answer) {
+        state.answerState = "correct";
+        state.score += current.points || 0;
+        state.correctAnswers += 1;
+      } else {
+        state.answerState = "incorrect";
+      }
+    },
+
+    nextQuestion: (state) => {
+      state.currentQuestionIndex += 1;
       state.answerState = null;
-      state.currentQuestionIndex++;
     },
     finishQuiz(state) {
-      processAnswer(state);
-
       state.quizCompleted = true;
-      state.selectedAnswer = null;
-      state.answerState = null;
     },
     resetQuiz: (state) => {
       state.currentQuestionIndex = 0;
@@ -84,7 +75,7 @@ const dataSlice = createSlice({
       state.ign = "";
       state.selectedAnswer = null;
       state.answerState = null;
-
+      state.correctAnswers = 0;
       state.role = "";
     },
   },
@@ -101,5 +92,6 @@ export const {
   selectAnswer,
   nextQuestion,
   finishQuiz,
+  answerQuestion,
   resetQuiz,
 } = dataSlice.actions;

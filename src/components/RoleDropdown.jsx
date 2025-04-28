@@ -46,7 +46,7 @@ export default function RoleDropdown({ selectRole, setSelectRole }) {
             <li
               key={r}
               onClick={() => handleSelect(r)}
-              className={`hover:bg-[#a3886b] cursor-[url('src/assets/cursor.png'),_auto] bg-[#FFD8AF] rounded-lg text-[#4e2c08] text-sm`}
+              className={`hover:bg-[#a3886b] cursor-[url('src/assets/cursor.png'),_auto] bg-[#FFD8AF] rounded-lg text-[#4e2c08] text-sm select-none`}
             >
               {r}
             </li>

@@ -15,8 +15,8 @@ const Loader = ({ size = 100, color = "#D8A54D", className }) => {
     >
       <defs>
         <linearGradient id="RadialGradient8932">
-          <stop offset="0%" stop-color="currentColor" stop-opacity="1" />
-          <stop offset="100%" stop-color="currentColor" stop-opacity="0.25" />
+          <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0.25" />
         </linearGradient>
       </defs>
       <style>{`
@@ -34,7 +34,7 @@ const Loader = ({ size = 100, color = "#D8A54D", className }) => {
             /* The ':' at the end in your provided SVG was likely a typo, removed here */
         }
       `}</style>
-      <circle cx="10" cy="10" r="8" id="circle8932" stroke-width="2" />
+      <circle cx="10" cy="10" r="8" id="circle8932" strokeWidth="2" />
     </svg>
   );
 

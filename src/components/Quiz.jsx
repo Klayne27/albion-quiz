@@ -12,11 +12,11 @@ export default function Quiz() {
     quizCompleted,
     loadingQuestions,
     questionsError,
+    score,
   } = useSelector((state) => state.data);
-  const currentQuestion = questions[currentQuestionIndex];
 
   if (loadingQuestions) {
-    return <Loader />
+    return <Loader />;
   }
 
   if (questionsError) {
@@ -31,6 +31,7 @@ export default function Quiz() {
     return null;
   }
 
+  const currentQuestion = questions[currentQuestionIndex];
   if (!currentQuestion) {
     return <div className="text-center text-xl mt-8">No questions available.</div>;
   }
@@ -46,62 +47,68 @@ export default function Quiz() {
     focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900
   `;
 
+  const questionsLength = questions.length;
+  const maxPossibleScore = questions.reduce((acc, curr) => acc + (curr.points || 0), 0);
+
+  const hpPercent = maxPossibleScore > 0 ? (score / maxPossibleScore) * 100 : 0;
+  const remainingCount = questionsLength - currentQuestionIndex;
+  const manaPercent = questionsLength ? (remainingCount / questionsLength) * 100 : 0;
+
   return (
     <div
-      className="relative w-full h-screen flex justify-center items-center bg-gray-900 overflow-hidden"
+      className="w-full min-h-screen flex justify-center items-center bg-gray-900 py-8"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-gradient-to-b from-[#e4c1a7] via-[#c7a387] to-[#c7a387] p-3 shadow-md w-full max-w-sm md:w-[46rem] ] lg:max-w-screen-md">
-        <div className="flex items-start gap-2 mb-4 sm:flex-row">
-          <div className="flex flex-col gap-4">
-            <img
-              src="./avatar.png"
-              className="w-17 h-17 border-[#9F7B5C] border-3 rounded-full mx-auto sm:w-17 sm:h-17 mt-1"
-              alt="Player Avatar"
-            />
-            <div className="mt-4 ml-1 text-xs text-gray-700 sm:text-left">
-              <p>Member of:</p>
-              <p className="font-semibold">Coalition</p>
+      <div className="relative bg-gradient-to-b from-[#e4c1a7] via-[#c7a387] to-[#c7a387] p-6 shadow-md w-full max-w-sm md:w-[46rem] lg:max-w-screen-md flex flex-col gap-5">
+        <button
+          type="button"
+          className={`right-5 p-1 border-3 rounded-full text-sm border-gray-500 bg-gradient-to-b from-stone-900 via-stone-800 to-stone-600 hover:from-stone-800 hover:via-stone-700 hover:to-stone-600 active:from-stone-950 active:via-stone-900 active:to-stone-700 text-yellow-400 cursor-pointer active:bg-[#4c5155] absolute  ${commonHoverActiveStyles} ${focusStyles}`}
+        >
+          <RxCross2 size={20} style={{ strokeWidth: "10%" }} />
+        </button>
+        <div className="flex items-center">
+          <img
+            src="./avatar11.png"
+            className="w-24 h-24  sm:w-24 sm:h-24 z-2"
+            alt="Player Avatar"
+          />
+          <div className="flex flex-col absolute z-1 ml-19">
+            <div className="border-t border-[#cea383] text-center text-[20px] font-bold text-[#4e2c08] shadow-lg justify-center bg-gradient-to-b from-[#e7b995] via-[#e4c1a7] to-[#e0b18d] rounded-b max-w-[11rem]">
+              {ign}
             </div>
-          </div>
-
-          <div className="flex flex-col justify-center text-sm text-gray-800 w-full">
-            <div className="flex gap-2 flex-col">
-              <div className="flex justify-between w-full">
-                <p className="text-2xl font-bold text-[#4e2c08]">{ign}</p>
-                <button
-                  type="button"
-                  className={`px-1 border-3 rounded-full text-sm border-gray-500 bg-gradient-to-b from-stone-900 via-stone-800 to-stone-600 hover:from-stone-800 hover:via-stone-700 hover:to-stone-600 active:from-stone-950 active:via-stone-900 active:to-stone-700 text-yellow-400 cursor-pointer active:bg-[#4c5155] ${commonHoverActiveStyles} ${focusStyles}`}
-                >
-                  <RxCross2 size={20} style={{ strokeWidth: "10%" }} />
-                </button>
+            <div className="flex flex-col border-x-5 border-y-2 rounded-b-md border-gray-700 bg-gray-700 w-44">
+              <div className="relative w-full h-5 bg-[#e4c1a7] rounded-md overflow-hidden max-w-[20rem]">
+                <div
+                  className="h-full bg-gradient-to-b from-[#800202] via-[#b30b0b] to-[#b30b0b]"
+                  style={{ width: `${hpPercent}%` }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white border-b-1 border-gray-700">
+                  {score} / {maxPossibleScore}
+                </div>
               </div>
-              <div className="flex items-center text-xs bg-gradient-to-b from-[#c7a387] via-[#e4c1a7] to-[#c7a387] px-2 py-0.5 shadow-md w-[16rem]">
-                <span className="flex gap-1">
-                  <span>
-                    <img src="/reputation.png" />
-                  </span>
-                  Glorious (Reputation: 50,000)
-                </span>
+              <div className="relative w-full h-5 bg-[#e4c1a7] rounded-md overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-b from-[#1d5391] via-[#2569b8] to-[#2569b8]"
+                  style={{ width: `${manaPercent}%` }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white border-t-1 border-gray-700">
+                  {remainingCount} / {questionsLength}
+                </div>
               </div>
-            </div>
-
-            <div className="mt-1 bg-[#E8DDCE] px-3 py-1 rounded-xl border shadow-md border-gray-400 text-gray-700 text-sm italic w-[16rem]">
-              Sinag #1
             </div>
           </div>
         </div>
-        <div className="shadow-lg p-3 bg-[#FBCFA5]">
-          <h2 className="text-md font-bold mb-4 text-[#4e2c08]">
+        <div className="shadow-lg p-6 bg-[#FBCFA5]">
+          <h2 className="text-xl font-bold mb-4 text-[#4e2c08]">
             {currentQuestion.question_text}
-          </h2>{" "}
+          </h2>
           <Options options={currentQuestion.options} />
-          <div className="mt-6 text-center text-gray-600 flex justify-between">
-            <p className="flex justify-center items-center">
-              Question {currentQuestionIndex + 1} of {questions.length}
+          <div className="mt-6 text-center text-gray-600 flex justify-between items-center">
+            <p className="flex justify-center items-center text-sm md:text-base">
+              Question {currentQuestionIndex + 1} of {questionsLength}
             </p>
             <NextButton />
           </div>
