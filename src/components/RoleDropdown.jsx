@@ -13,7 +13,7 @@ export default function RoleDropdown({ selectRole, setSelectRole }) {
   const displayTextClass = selectRole ? "text-[#4e2c08]" : "text-[#926e47]";
 
   return (
-    <div className="relative w-full cursor-[url('src/assets/cursor.png'),_auto]">
+    <div className="relative w-full cursor-[url('/cursor.png'),_auto]">
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`bg-gradient-to-b from-[#FFD8AF] via-[#cea985] to-[#a3886b] placeholder:text-[#926e47] border-3 border-gray-500 text-[#4e2c08] text-sm 
@@ -40,13 +40,13 @@ export default function RoleDropdown({ selectRole, setSelectRole }) {
       {isOpen && (
         <ul
           className="absolute z-10 mt-1 w-full bg-[#FFD8AF] border-3 border-gray-600 rounded-lg shadow-lg
-                     cursor-[url('src/assets/cursor.png'),_auto]"
+                     cursor-[url('/cursor.png'),_auto]"
         >
           {roles.map((r) => (
             <li
               key={r}
               onClick={() => handleSelect(r)}
-              className={`hover:bg-[#a3886b] cursor-[url('src/assets/cursor.png'),_auto] bg-[#FFD8AF] rounded-lg text-[#4e2c08] text-sm select-none`}
+              className={`hover:bg-[#a3886b] cursor-[url('/cursor.png'),_auto] bg-[#FFD8AF] rounded-lg text-[#4e2c08] text-sm select-none`}
             >
               {r}
             </li>
