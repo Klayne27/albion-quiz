@@ -42,12 +42,6 @@ const dataSlice = createSlice({
       state.questionsError = action.payload;
       state.loadingQuestions = false;
     },
-    selectAnswer: (state, action) => {
-      if (state.answerState === null) {
-        state.selectedAnswer = action.payload;
-      }
-    },
-
     answerQuestion: (state, action) => {
       const current = state.questions[state.currentQuestionIndex];
       const picked = action.payload;
@@ -66,7 +60,6 @@ const dataSlice = createSlice({
         state.hp = Math.max(state.hp - cost, 0);
       }
     },
-
     nextQuestion: (state) => {
       state.currentQuestionIndex += 1;
       state.answerState = null;
@@ -80,7 +73,6 @@ const dataSlice = createSlice({
       state.score = 0;
       state.quizCompleted = false;
       state.ign = "";
-      state.selectedAnswer = null;
       state.answerState = null;
       state.correctAnswers = 0;
       state.role = "";
@@ -96,7 +88,6 @@ export const {
   setQuestions,
   setLoadingQuestions,
   setQuestionsError,
-  selectAnswer,
   nextQuestion,
   finishQuiz,
   answerQuestion,

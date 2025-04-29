@@ -43,7 +43,7 @@ export default function Options({ options }) {
             onClick={() => handleClick(opt)}
             disabled={disabled}
             className={`
-              border-3 border-gray-500 rounded-full text-sm transition ease-in-out duration-150 transform active:scale-95
+              border-3 border-gray-500 rounded-full text-sm transition ease-in-out duration-150 transform active:scale-95 
               ${bgClass}
               ${disabled ? "opacity-80" : ""}
             `}
